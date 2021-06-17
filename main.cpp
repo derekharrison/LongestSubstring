@@ -19,7 +19,7 @@ int longest_substring(std::string s) {
     int size_string = s.size();
     std::map<char, s_elem> my_table;
 
-    int max_index = 0;
+    int curr_index = 0;
 
     //Scan for largest substring
     int longest_substring_size = 0;
@@ -27,7 +27,6 @@ int longest_substring(std::string s) {
         bool there_is_duplicate = false;
 
         int l_index = i;
-        int curr_index = max_index;
 
         while(!there_is_duplicate && curr_index < size_string) {
             char check_char = s[curr_index];
@@ -39,10 +38,6 @@ int longest_substring(std::string s) {
                 my_table[check_char].in_set = true;
                 my_table[check_char].index = curr_index;
                 curr_index++;
-            }
-
-            if(max_index < curr_index) {
-                max_index = curr_index;
             }
 
             if((curr_index - l_index) > longest_substring_size) {
