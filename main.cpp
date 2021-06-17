@@ -10,8 +10,8 @@
 #include <map>
 
 typedef struct string_element {
-	bool in_set;
-	int index;
+    bool in_set;
+    int index;
 } s_elem;
 
 int longest_substring(std::string s) {
@@ -57,7 +57,7 @@ int longest_substring(std::string s) {
 
 int main(int argc, char* argv[]) {
 
-	std::string s = "abcabcbb";
+    std::string s = "abcabcbb";
 
     int longest_substring_size = longest_substring(s);
 
