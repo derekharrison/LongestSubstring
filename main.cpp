@@ -31,6 +31,7 @@ int longest_substring(std::string s) {
             char check_char = s[curr_index];
             bool char_is_stored = my_table[check_char].is_stored;
             bool index_in_set = my_table[check_char].index >= l_index;
+
             bool char_in_set = char_is_stored && index_in_set;
 
             if(char_in_set) {
@@ -54,7 +55,7 @@ int longest_substring(std::string s) {
 
 int main(int argc, char* argv[]) {
 
-	std::string s = "abcabcbb";
+    std::string s = "abcabcbb";
 
     int longest_substring_size = longest_substring(s);
 
