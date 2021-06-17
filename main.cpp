@@ -10,7 +10,7 @@
 #include <map>
 
 typedef struct string_element {
-    bool in_set;
+    bool is_stored;
     int index;
 } s_elem;
 
@@ -25,17 +25,19 @@ int longest_substring(std::string s) {
     int longest_substring_size = 0;
     for(int i = 0; i < size_string; ++i) {
         bool there_is_duplicate = false;
-
         int l_index = i;
 
         while(!there_is_duplicate && curr_index < size_string) {
             char check_char = s[curr_index];
+            bool char_is_stored = my_table[check_char].is_stored;
+            bool index_in_set = my_table[check_char].index >= l_index;
+            bool char_in_set = char_is_stored && index_in_set;
 
-            if(my_table[check_char].in_set && my_table[check_char].index >= l_index) {
+            if(char_in_set) {
                 there_is_duplicate = true;
             }
             else {
-                my_table[check_char].in_set = true;
+                my_table[check_char].is_stored = true;
                 my_table[check_char].index = curr_index;
                 curr_index++;
             }
@@ -52,7 +54,7 @@ int longest_substring(std::string s) {
 
 int main(int argc, char* argv[]) {
 
-    std::string s = "abcabcbb";
+	std::string s = "abcabcbb";
 
     int longest_substring_size = longest_substring(s);
 
